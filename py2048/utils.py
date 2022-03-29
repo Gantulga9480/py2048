@@ -1,8 +1,8 @@
-from Game import Color
+from Game import WHITE, BLACK
 import pygame
 
 
-class Colors(Color):
+class Colors:
 
     BG = pygame.Color(187, 173, 160)
     BOX_EMPTY = pygame.Color(214, 205, 196)

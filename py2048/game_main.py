@@ -1,7 +1,7 @@
 from Game import Game
 from .game_core import Board, Engine
 from .game_core import UP, DOWN, LEFT, RIGHT, UNDO, INPLACE
-from .utils import Colors, pygame
+from .utils import Colors, pygame, WHITE, BLACK
 
 
 class Py2048(Game):
@@ -97,10 +97,10 @@ class Py2048(Game):
                     if node_value != 0:
                         if node_value < 4096:
                             txt = self.font.render(str(node_value),
-                                                   1, self.color.BLACK)
+                                                   1, BLACK)
                         else:
                             txt = self.font.render(str(node_value),
-                                                   1, self.color.WHITE)
+                                                   1, WHITE)
                         self.game_window.blit(txt, [self.POSITION[i][j][0] +
                                                     (self.BOX-self.BOX_PAD)//2
                                                     - txt.get_width()//2,
@@ -165,10 +165,10 @@ class Py2048(Game):
                                  0, 7)
                 if node_value < 4096:
                     txt = self.font.render(str(node_value),
-                                           1, self.color.BLACK)
+                                           1, BLACK)
                 else:
                     txt = self.font.render(str(node_value),
-                                           1, self.color.WHITE)
+                                           1, WHITE)
                 self.game_window.blit(txt, [x + (self.BOX-self.BOX_PAD)//2
                                             - txt.get_width()//2,
                                             y + (self.BOX-self.BOX_PAD)//2
@@ -177,6 +177,6 @@ class Py2048(Game):
             self.clock.tick(self.FPS)
 
     def draw_end_screen(self):
-        txt = self.font.render('GAME OVER', 1, self.color.BLACK)
+        txt = self.font.render('GAME OVER', 1, BLACK)
         self.game_window.blit(txt, [self.WIDTH//2 - txt.get_width()//2,
                                     self.HEIGTH//2 - txt.get_height()//2])
