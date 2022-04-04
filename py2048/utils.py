@@ -1,22 +1,21 @@
-from Game import Color
-import pygame
+import pygame.color as c
 
 
-class Colors(Color):
+class Colors:
 
-    BG = pygame.Color(187, 173, 160)
-    BOX_EMPTY = pygame.Color(214, 205, 196)
-    BOX_2 = pygame.Color(238, 228, 216)
-    BOX_4 = pygame.Color(236, 224, 200)
-    BOX_8 = pygame.Color(242, 177, 121)
-    BOX_16 = pygame.Color(246, 148, 99)
-    BOX_32 = pygame.Color(245, 124, 95)
-    BOX_64 = pygame.Color(246, 93, 61)
-    BOX_128 = pygame.Color(237, 206, 113)
-    BOX_256 = pygame.Color(237, 204, 97)
-    BOX_512 = pygame.Color(236, 200, 80)
-    BOX_1024 = pygame.Color(237, 197, 63)
-    BOX_2048 = pygame.Color(237, 197, 46)
+    BG = c.Color(187, 173, 160)
+    BOX_EMPTY = c.Color(214, 205, 196)
+    BOX_2 = c.Color(238, 228, 216)
+    BOX_4 = c.Color(236, 224, 200)
+    BOX_8 = c.Color(242, 177, 121)
+    BOX_16 = c.Color(246, 148, 99)
+    BOX_32 = c.Color(245, 124, 95)
+    BOX_64 = c.Color(246, 93, 61)
+    BOX_128 = c.Color(237, 206, 113)
+    BOX_256 = c.Color(237, 204, 97)
+    BOX_512 = c.Color(236, 200, 80)
+    BOX_1024 = c.Color(237, 197, 63)
+    BOX_2048 = c.Color(237, 197, 46)
 
     __COLORS = {
         -1: BG,
