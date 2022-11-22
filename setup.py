@@ -1,7 +1,6 @@
 import setuptools
 
 with open("README.md", "r") as fh:
-
     long_description = fh.read()
 
 setuptools.setup(
@@ -9,7 +8,7 @@ setuptools.setup(
     version="1.0.1",
     author="Gantulga G",
     author_email="limited.tulgaa@gmail.com>",
-    description="Pygame base class for ease of use",
+    description="Python implementation of 2048 game",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Gantulga9480/Game",
