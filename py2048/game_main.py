@@ -1,6 +1,6 @@
-from Game.base import Game
-from Game.color import BLACK, WHITE
-from Game.utils import *
+from .Game.base import Game
+from .Game.color import BLACK, WHITE
+from .Game.utils import *
 from .game_core import Board, Engine
 from .game_core import UP, DOWN, LEFT, RIGHT, UNDO, INPLACE
 from .utils import Colors

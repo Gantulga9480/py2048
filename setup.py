@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="py2048",
-    version="1.0.1",
+    version="1.0.2",
     author="Gantulga G",
     author_email="limited.tulgaa@gmail.com>",
     description="Python implementation of 2048 game",
@@ -14,5 +14,5 @@ setuptools.setup(
     url="https://github.com/Gantulga9480/Game",
     packages=['py2048'],
     license='MIT',
-    install_requires=['pygame'],
+    install_requires=['pygame', 'numpy'],
 )
