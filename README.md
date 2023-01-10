@@ -2,6 +2,9 @@
 
 # CHANGE LOG
 
+## v1.0.3
+    Base Game module upgraded to v2s
+
 ## v1.0.2
     Base Game module included in py2048 module
 

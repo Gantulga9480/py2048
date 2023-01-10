@@ -136,10 +136,8 @@ class Py2048(Game):
                         animation_list[ind][0][0] += blob[3]
                     elif blob[1] == INPLACE:
                         pass
-                    xd = abs(animation_list[ind][2][0] -
-                             animation_list[ind][0][0])
-                    yd = abs(animation_list[ind][2][1] -
-                             animation_list[ind][0][1])
+                    xd = abs(animation_list[ind][2][0] - animation_list[ind][0][0])
+                    yd = abs(animation_list[ind][2][1] - animation_list[ind][0][1])
                     if (xd + yd) < blob[3]:
                         done[ind] = True
 
