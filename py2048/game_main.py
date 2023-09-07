@@ -1,4 +1,5 @@
-from .Game import Game
+import sys
+from .Game.Game import Game
 from .game_core import Board, Engine
 from .game_core import UP, DOWN, LEFT, RIGHT, UNDO, INPLACE
 from .utils import Colors
