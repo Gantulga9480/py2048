@@ -33,7 +33,7 @@ Email  - limited.tulgaa@gmail.com
 
 ## Change log
 
-#### v1.0.3 - 2023/09/07
+#### v1.0.4 - 2023/09/07
 - Game module added as git submodule
 - engine.reset method added
 - py2048.reset method added
