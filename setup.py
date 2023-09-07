@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="py2048",
-    version="1.0.3",
+    version="1.0.4",
     author="Gantulga G",
     author_email="limited.tulgaa@gmail.com>",
     description="Python implementation of 2048 game",

@@ -1,5 +1,5 @@
-from .game_core import Node
-from .game_core import Board
-from .game_core import Engine
-from .game_core import (UP, DOWN, LEFT, RIGHT, UNDO)
-from .game_main import Py2048
+from .game_engine import Node
+from .game_engine import Board
+from .game_engine import Engine
+from .game_engine import (UP, DOWN, LEFT, RIGHT, UNDO)
+from .game_front import Py2048

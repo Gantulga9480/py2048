@@ -1,7 +1,7 @@
 import sys
 from .Game.Game import Game
-from .game_core import Board, Engine
-from .game_core import UP, DOWN, LEFT, RIGHT, UNDO, INPLACE
+from .game_engine import Board, Engine
+from .game_engine import UP, DOWN, LEFT, RIGHT, UNDO, INPLACE
 from .utils import Colors
 import pygame as pg
 
