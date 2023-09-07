@@ -13,7 +13,7 @@ INPLACE = 5  # For animation
 
 class Node:
 
-    def __init__(self, value) -> None:
+    def __init__(self, value: int) -> None:
         self.value = value
 
     def __eq__(self, __o: object) -> bool:
@@ -21,12 +21,14 @@ class Node:
             return __o.value == self.value
         elif isinstance(__o, int):
             return __o == self.value
+        raise TypeError("Expected 'Node' or 'int', got %s".format(type(__o)))
 
     def __ne__(self, __o: object) -> bool:
         if isinstance(__o, Node):
             return __o.value != self.value
         elif isinstance(__o, int):
             return __o != self.value
+        raise TypeError("Expected 'Node' or 'int', got %s".format(type(__o)))
 
     def __repr__(self) -> str:
         return str(self.value)
@@ -38,7 +40,7 @@ class Board:
     START_BOX = 2  # Boxes to generate at start
     BOARD_SHAPE = (4, 4)
 
-    def __init__(self, board=None) -> None:
+    def __init__(self, board: np.ndarray = None) -> None:
         """
         If board is present, game board from pre-defined values.
         Otherwise will generate new board.
@@ -56,7 +58,7 @@ class Board:
                 f'{self.board[3][0]} {self.board[3][1]} {self.board[3][2]} '
                 f'{self.board[3][3]}\n')
 
-    def __eq__(self, __o: object) -> bool:
+    def __eq__(self, __o: 'Board') -> bool:
         for i in range(4):
             for j in range(4):
                 try:
@@ -66,7 +68,7 @@ class Board:
                     return False
         return True
 
-    def __ne__(self, __o: object) -> bool:
+    def __ne__(self, __o: 'Board') -> bool:
         for i in range(4):
             for j in range(4):
                 if self.board[i][j].value != __o[i][j].value:
@@ -103,7 +105,7 @@ class Board:
                 self.empty_boxes = self.get_empty()
                 self.generate()
 
-    def set(self, b) -> None:
+    def set(self, b: np.ndarray) -> None:
         self.board = [[Node(b[0, 0]), Node(b[0, 1]),
                        Node(b[0, 2]), Node(b[0, 3])],
                       [Node(b[1, 0]), Node(b[1, 1]),
@@ -113,7 +115,7 @@ class Board:
                       [Node(b[3, 0]), Node(b[3, 1]),
                        Node(b[3, 2]), Node(b[3, 3])]]
 
-    def set_all(self, board):
+    def set_all(self, board: 'Board'):
         self.set(board.get())
         self.score = board.score
         self.last_score = board.last_score
