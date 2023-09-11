@@ -1,5 +1,6 @@
+import os
 import sys
-sys.path.append("C:/Users/halo9/Desktop/pyProjects/py2048")
+sys.path.append(os.getcwd())
 from Py2048 import Py2048  # noqa
 
 
