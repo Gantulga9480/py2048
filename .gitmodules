@@ -1,4 +1,4 @@
 [submodule "py2048/Game"]
-	path = Py2048/Game
+	path = py2048/Game
 	url = https://github.com/Gantulga9480/Game.git
 	branch = v2s
