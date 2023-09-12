@@ -142,27 +142,27 @@ class Board:
 
     def up(self) -> bool:
         self.board = np.rot90(self.board, 2)
-        local_score = self.compute()
+        local_score = self.__compute()
         self.board = np.rot90(self.board, 2)
-        return self.end_move(local_score)
+        return self.__end_move(local_score)
 
     def down(self) -> bool:
-        local_score = self.compute()
-        return self.end_move(local_score)
+        local_score = self.__compute()
+        return self.__end_move(local_score)
 
     def left(self) -> bool:
         self.board = np.rot90(self.board, 1)
-        local_score = self.compute()
+        local_score = self.__compute()
         self.board = np.rot90(self.board, 3)
-        return self.end_move(local_score)
+        return self.__end_move(local_score)
 
     def right(self) -> bool:
         self.board = np.rot90(self.board, 3)
-        local_score = self.compute()
+        local_score = self.__compute()
         self.board = np.rot90(self.board, 1)
-        return self.end_move(local_score)
+        return self.__end_move(local_score)
 
-    def compute(self) -> int:
+    def __compute(self) -> int:
         score = -1
         for col_idx in range(self.size):
             last_summed = False
@@ -190,7 +190,7 @@ class Board:
                             break
         return score
 
-    def end_move(self, local_score) -> bool:
+    def __end_move(self, local_score) -> bool:
         if local_score < 0:
             return False
         gen_score = self.generate()

@@ -9,7 +9,7 @@ class Py2048(Game):
 
     WIDTH = 900
     HEIGTH = WIDTH
-    BOARD_SIZE = 20
+    BOARD_SIZE = 4
 
     def __init__(self) -> None:
         super().__init__()
