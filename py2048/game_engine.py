@@ -102,8 +102,8 @@ class Board:
 
     def get_empty(self) -> list:
         empty_box = []
-        for i in range(4):
-            for j in range(4):
+        for i in range(self.size):
+            for j in range(self.size):
                 if self.board[i][j] == 0:
                     empty_box.append([i, j])
         return empty_box
@@ -116,14 +116,14 @@ class Board:
             return True
 
     def available(self):
-        if self.board[3][3] == 0:
+        if self.board[self.size - 1][self.size - 1] == 0:
             return True
-        for i in range(3):
-            for j in range(4):
+        for i in range(self.size - 1):
+            for j in range(self.size):
                 if self.board[i][j] == self.board[i + 1][j] or self.board[i][j] == 0:
                     return True
-        for i in range(4):
-            for j in range(3):
+        for i in range(self.size):
+            for j in range(self.size - 1):
                 if self.board[i][j] == self.board[i][j + 1] or self.board[i][j] == 0:
                     return True
         return False
