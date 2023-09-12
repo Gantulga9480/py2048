@@ -1,6 +1,5 @@
 import numpy as np
 import random
-import copy
 
 UP = 0
 DOWN = 1
@@ -31,20 +30,6 @@ class Board:
                 row.append(str(self.board[i][j]))
             rep_str.append(' '.join(row))
         return '\n'.join(rep_str)
-
-    def __eq__(self, __o: 'Board') -> bool:
-        for i in range(self.size):
-            for j in range(self.size):
-                if self.board[i][j] != __o[i][j]:
-                    return False
-        return True
-
-    def __ne__(self, __o: 'Board') -> bool:
-        for i in range(self.size):
-            for j in range(self.size):
-                if self.board[i][j] != __o[i][j]:
-                    return True
-        return False
 
     def __getitem__(self, indices):
         return self.board[indices]
@@ -85,7 +70,7 @@ class Board:
         board = np.zeros((self.size, self.size), dtype=np.int32)
         for i in range(self.size):
             for j in range(self.size):
-                board[i, j] = self.board[i][j]
+                board[i, j] = self.board[i, j]
         return board
 
     def generate(self) -> int:
@@ -94,18 +79,18 @@ class Board:
             pos = random.choice(empty_boxes)
             prob = random.random()
             if prob <= self.ODDS:
-                self.board[pos[0]][pos[1]] = 4
+                self.board[pos] = 4
             else:
-                self.board[pos[0]][pos[1]] = 2
-            return self.board[pos[0]][pos[1]]
+                self.board[pos] = 2
+            return self.board[pos]
         return 0
 
     def get_empty(self) -> list:
         empty_box = []
         for i in range(self.size):
             for j in range(self.size):
-                if self.board[i][j] == 0:
-                    empty_box.append([i, j])
+                if self.board[i, j] == 0:
+                    empty_box.append((i, j))
         return empty_box
 
     def is_full(self) -> bool:
@@ -122,9 +107,7 @@ class Board:
             for j in range(self.size):
                 if self.board[i][j] == self.board[i + 1][j] or self.board[i][j] == 0:
                     return True
-        for i in range(self.size):
-            for j in range(self.size - 1):
-                if self.board[i][j] == self.board[i][j + 1] or self.board[i][j] == 0:
+                if self.board[j][i] == self.board[j][i + 1] or self.board[j][i] == 0:
                     return True
         return False
 
@@ -138,6 +121,8 @@ class Board:
             result = self.left()
         elif move_dir == RIGHT:
             result = self.right()
+        else:
+            raise ValueError("Undefined move direction given")
         return result
 
     def up(self) -> bool:
