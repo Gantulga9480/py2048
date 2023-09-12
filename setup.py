@@ -12,7 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Gantulga9480/Py2048",
-    packages=['Py2048'],
+    packages=['py2048'],
     license='MIT',
     install_requires=['pygame', 'numpy'],
 )
