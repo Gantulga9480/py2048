@@ -57,16 +57,16 @@ class Py2048(Game):
     def draw_board(self):
         for i in range(self.game_board.size):
             for j in range(self.game_board.size):
-                node_value = self.game_board[i, j]
+                tile_value = self.game_board[i, j]
                 position = [self.BOX_PAD + self.BOX * j, self.BOX_PAD + self.BOX * i]
-                pg.draw.rect(self.window, self.color[node_value],
+                pg.draw.rect(self.window, self.color[tile_value],
                              pg.Rect(*position, self.BOX - self.BOX_PAD, self.BOX - self.BOX_PAD),
                              0, 7)
-                if node_value != 0:
-                    if node_value < 4096:
-                        txt = self.font.render(str(node_value), 1, (0, 0, 0))
+                if tile_value != 0:
+                    if tile_value < 4096:
+                        txt = self.font.render(str(tile_value), 1, (0, 0, 0))
                     else:
-                        txt = self.font.render(str(node_value), 1, (255, 255, 255))
+                        txt = self.font.render(str(tile_value), 1, (255, 255, 255))
                     self.window.blit(txt, [position[0] + (self.BOX - self.BOX_PAD) // 2 - txt.get_width() // 2, position[1] + (self.BOX - self.BOX_PAD) // 2 - txt.get_height() // 2])
 
     def draw_end_screen(self):

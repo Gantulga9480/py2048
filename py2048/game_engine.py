@@ -155,23 +155,23 @@ class Board:
                 diff = self.size - 1 - row_idx
                 new_j = row_idx
                 for _ in range(diff):
-                    current_node_value = self.board[new_j][col_idx]
+                    current_tile_value = self.board[new_j][col_idx]
                     new_j += 1
-                    next_node_value = self.board[new_j][col_idx]
-                    if current_node_value > 0:
-                        if (next_node_value == 0) or ((next_node_value == current_node_value) and not last_summed):
-                            self.board[new_j][col_idx] += current_node_value  # set new node value
-                            self.board[new_j - 1][col_idx] = 0                # clear current node value
-                            if next_node_value > 0:
+                    next_tile_value = self.board[new_j][col_idx]
+                    if current_tile_value > 0:
+                        if (next_tile_value == 0) or ((next_tile_value == current_tile_value) and not last_summed):
+                            self.board[new_j][col_idx] += current_tile_value  # set new tile value
+                            self.board[new_j - 1][col_idx] = 0                # clear current tile value
+                            if next_tile_value > 0:
                                 if score < 0:
                                     score = 0
-                                score += next_node_value * 2
-                                last_summed = True                            # block next node check sum
+                                score += next_tile_value * 2
+                                last_summed = True                            # block next tile sum check
                                 break
                             if score < 0:
                                 score = 0
                         else:
-                            last_summed = False  # if stuck unblock next node and break
+                            last_summed = False  # if stuck unblock next tile and break
                             break
         return score
 
