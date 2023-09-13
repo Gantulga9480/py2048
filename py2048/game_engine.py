@@ -16,6 +16,7 @@ class Board:
     START_BOX = 3  # Boxes to generate at start
 
     def __init__(self, size) -> None:
+        assert size > 0, 'size must be greater than 0'
         self.size = size
         self.board = None
         self.last_board = None
