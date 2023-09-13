@@ -16,6 +16,8 @@ This copy of 2048 game has two sides, front and engine. The front side is made o
 
     pip install git+https://github.com/Gantulga9480/py2048.git#egg=py2048
 
+or directly download from [releases](https://github.com/Gantulga9480/py2048/releases) for more stable release
+
 ### Executing program
 
 Copy and past the following code and run.
