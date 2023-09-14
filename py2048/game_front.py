@@ -9,18 +9,18 @@ class Py2048(Game):
 
     WIDTH = 900
     HEIGTH = WIDTH
-    BOARD_SIZE = 4
 
-    def __init__(self) -> None:
+    def __init__(self, board_size) -> None:
         super().__init__()
+        self.board_size = board_size
         self.title = r'2048'
         self.size = (self.WIDTH, self.HEIGTH)
         self.fps = 60
         self.over = False
         self.color = Colors()
-        self.game_board = Board(self.BOARD_SIZE)
-        self.BOX_PAD = self.WIDTH / self.BOARD_SIZE / 10
-        self.BOX = (self.WIDTH - self.BOX_PAD) / self.BOARD_SIZE
+        self.board = Board(self.board_size)
+        self.BOX_PAD = self.WIDTH / self.board_size / 10
+        self.BOX = (self.WIDTH - self.BOX_PAD) / self.board_size
         self.font = pg.font.SysFont("arial", int(self.BOX // 2), True)
         self.font2 = pg.font.SysFont("arial", 150, True)
 
@@ -40,13 +40,13 @@ class Py2048(Game):
                 self.reset()
 
     def step(self, move_dir):
-        result = self.game_board.move(move_dir)
-        self.over = not self.game_board.available()
+        result = self.board.move(move_dir)
+        self.over = not self.board.available()
         return result
 
     def reset(self):
         self.over = False
-        self.game_board.reset()
+        self.board.reset()
 
     def onRender(self) -> None:
         self.window.fill(self.color.BG)
@@ -55,9 +55,9 @@ class Py2048(Game):
             self.draw_end_screen()
 
     def draw_board(self):
-        for i in range(self.game_board.size):
-            for j in range(self.game_board.size):
-                tile_value = self.game_board[i, j]
+        for i in range(self.board.size):
+            for j in range(self.board.size):
+                tile_value = self.board[i, j]
                 position = [self.BOX_PAD + self.BOX * j, self.BOX_PAD + self.BOX * i]
                 pg.draw.rect(self.window, self.color[tile_value],
                              pg.Rect(*position, self.BOX - self.BOX_PAD, self.BOX - self.BOX_PAD),
