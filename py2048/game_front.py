@@ -10,7 +10,7 @@ class Py2048(Game):
     WIDTH = 900
     HEIGTH = WIDTH
 
-    def __init__(self, board_size) -> None:
+    def __init__(self, board_size=4) -> None:
         super().__init__()
         self.board_size = board_size
         self.title = r'2048'
