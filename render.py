@@ -1,8 +1,44 @@
-from .Game.Game import Game
-from .game_engine import Board
-from .game_engine import UP, DOWN, LEFT, RIGHT, UNDO, INPLACE
-from .utils import Colors
+from .pygw import Game
+from .board import Board
+from .board import UP, DOWN, LEFT, RIGHT, UNDO, INPLACE
 import pygame as pg
+import pygame.color as c
+
+
+class Colors:
+
+    BG = c.Color(187, 173, 160)
+    BOX_EMPTY = c.Color(214, 205, 196)
+    BOX_2 = c.Color(238, 228, 216)
+    BOX_4 = c.Color(236, 224, 200)
+    BOX_8 = c.Color(242, 177, 121)
+    BOX_16 = c.Color(246, 148, 99)
+    BOX_32 = c.Color(245, 124, 95)
+    BOX_64 = c.Color(246, 93, 61)
+    BOX_128 = c.Color(237, 206, 113)
+    BOX_256 = c.Color(237, 204, 97)
+    BOX_512 = c.Color(236, 200, 80)
+    BOX_1024 = c.Color(237, 197, 63)
+    BOX_2048 = c.Color(237, 197, 46)
+
+    __COLORS = {
+        -1: BG,
+        0: BOX_EMPTY,
+        2: BOX_2,
+        4: BOX_4,
+        8: BOX_8,
+        16: BOX_16,
+        32: BOX_32,
+        64: BOX_64,
+        128: BOX_128,
+        256: BOX_256,
+        512: BOX_512,
+        1024: BOX_1024,
+        2048: BOX_2048
+    }
+
+    def __getitem__(self, indices):
+        return self.__COLORS[indices]
 
 
 class Py2048(Game):
@@ -49,7 +85,7 @@ class Py2048(Game):
         self.board.reset()
 
     def onRender(self) -> None:
-        self.window.fill(self.color.BG)
+        self.window.surface.fill(self.color.BG)
         self.draw_board()
         if self.over:
             self.draw_end_screen()
@@ -59,7 +95,7 @@ class Py2048(Game):
             for j in range(self.board.size):
                 tile_value = self.board[i, j]
                 position = [self.BOX_PAD + self.BOX * j, self.BOX_PAD + self.BOX * i]
-                pg.draw.rect(self.window, self.color[tile_value],
+                pg.draw.rect(self.window.surface, self.color[tile_value],
                              pg.Rect(*position, self.BOX - self.BOX_PAD, self.BOX - self.BOX_PAD),
                              0, 7)
                 if tile_value != 0:
@@ -67,13 +103,13 @@ class Py2048(Game):
                         txt = self.font.render(str(tile_value), 1, (0, 0, 0))
                     else:
                         txt = self.font.render(str(tile_value), 1, (255, 255, 255))
-                    self.window.blit(txt, [position[0] + (self.BOX - self.BOX_PAD) // 2 - txt.get_width() // 2, position[1] + (self.BOX - self.BOX_PAD) // 2 - txt.get_height() // 2])
+                    self.window.surface.blit(txt, [position[0] + (self.BOX - self.BOX_PAD) // 2 - txt.get_width() // 2, position[1] + (self.BOX - self.BOX_PAD) // 2 - txt.get_height() // 2])
 
     def draw_end_screen(self):
         surf = pg.Surface((self.WIDTH, self.HEIGTH))
         surf.set_alpha(200)
         surf.fill(pg.Color(0, 0, 0))
-        self.window.blit(surf, (0, 0))
+        self.window.surface.blit(surf, (0, 0))
         txt = self.font2.render('GAME OVER', 1, (0, 0, 0), (255, 0, 0))
-        self.window.blit(txt, [self.WIDTH // 2 - txt.get_width() // 2,
+        self.window.surface.blit(txt, [self.WIDTH // 2 - txt.get_width() // 2,
                                self.HEIGTH // 2 - txt.get_height() // 2])
