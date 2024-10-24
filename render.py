@@ -20,6 +20,7 @@ class Colors:
     BOX_512 = c.Color(236, 200, 80)
     BOX_1024 = c.Color(237, 197, 63)
     BOX_2048 = c.Color(237, 197, 46)
+    BOX_MAX = c.Color(50, 50, 50)
 
     __COLORS = {
         -1: BG,
@@ -38,7 +39,9 @@ class Colors:
     }
 
     def __getitem__(self, indices):
-        return self.__COLORS[indices]
+        if indices <= 2048:
+            return self.__COLORS[indices]
+        return self.BOX_MAX
 
 
 class Py2048(Game):
